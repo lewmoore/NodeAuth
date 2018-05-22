@@ -9,5 +9,11 @@ app.set("view engine", "ejs")
 
 mongoose.connect(configDB.url);
 
+app.get('/', function(req, res){
+  res.send('Welcome!')
+})
+
 app.listen(port);
 console.log('The magic happens on port ' + port);
+
+module.exports = app
