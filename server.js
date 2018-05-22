@@ -18,6 +18,10 @@ app.get('/login', function(req, res){
   res.render('login')
 })
 
+app.get('/profile', function(req, res){
+  res.render('profile')
+})
+
 app.listen(port);
 console.log('The magic happens on port ' + port);
 
