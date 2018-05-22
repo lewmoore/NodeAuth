@@ -25,7 +25,21 @@ app.get('/profile', function(req, res){
 app.get('/signup', function(req, res){
   res.render('signup')
 })
+
+app.get('/logout', function(req, res){
+  req.logout()
+  res.redirect('/')
+})
+
 app.listen(port);
 console.log('The magic happens on port ' + port);
+
+function isLoggedIn(req, res, next) {
+
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
 
 module.exports = app

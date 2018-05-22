@@ -6,7 +6,7 @@ let should = chai.should()
 
 chai.use(chaiHttp)
 
-describe('index page', function(){
+describe('signup page', function(){
   it('should render home page', function(done){
     chai.request(server)
     .get('/signup')

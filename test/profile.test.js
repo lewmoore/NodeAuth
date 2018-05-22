@@ -6,8 +6,8 @@ let should = chai.should()
 
 chai.use(chaiHttp)
 
-describe('index page', function(){
-  it('should render home page', function(done){
+describe('profile page', function(){
+  it('should render profile page', function(done){
     chai.request(server)
     .get('/profile')
     .end(function(err, res){
