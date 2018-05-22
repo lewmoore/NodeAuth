@@ -4,6 +4,7 @@ let port = process.env.PORT || 8080;
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let configDB = require('./config/database.js')
+let passport = require('passport');
 
 app.set("view engine", "ejs")
 
