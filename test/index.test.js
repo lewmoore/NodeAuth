@@ -7,11 +7,12 @@ let should = chai.should()
 chai.use(chaiHttp)
 
 describe('index page', function(){
-  it('shouldnt error', function(done){
+  it('should render home page', function(done){
     chai.request(server)
     .get('/')
     .end(function(err, res){
       res.should.have.status(200)
+      expect(res.text).to.contain('This is the home page')
     })
     done()
   })

@@ -10,7 +10,7 @@ app.set("view engine", "ejs")
 mongoose.connect(configDB.url);
 
 app.get('/', function(req, res){
-  res.send('Welcome!')
+  res.render('index')
 })
 
 app.listen(port);
