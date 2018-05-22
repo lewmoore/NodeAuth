@@ -1,0 +1,12 @@
+let express = require('express');
+let app = express();
+let port = process.env.PORT || 8080;
+let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
+
+app.set("view engine", "ejs")
+
+mongoose.connect(configDB.url);
+
+app.listen(port);
+console.log('The magic happens on port ' + port);
