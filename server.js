@@ -3,8 +3,15 @@ let app = express();
 let port = process.env.PORT || 8080;
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let cookieParser = require('cookie-parser')
+let session = require('express-session')
 let configDB = require('./config/database.js')
 let passport = require('passport');
+
+app.use(cookieParser())
+app.use(bodyParser())
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.set("view engine", "ejs")
 
