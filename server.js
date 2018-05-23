@@ -7,11 +7,14 @@ let cookieParser = require('cookie-parser')
 let session = require('express-session')
 let configDB = require('./config/database.js')
 let passport = require('passport');
+require('./config/passport')(passport)
 
 app.use(cookieParser())
-app.use(bodyParser())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(session({ secret: 'reallygoodsecret' }))
 
 app.set("view engine", "ejs")
 
@@ -32,6 +35,11 @@ app.get('/profile', function(req, res){
 app.get('/signup', function(req, res){
   res.render('signup')
 })
+
+app.post('/signup', passport.authenticate('local-signup', {
+  successRedirect: '/profile',
+  failureRedirect: '/signup'
+}))
 
 app.get('/logout', function(req, res){
   req.logout()
