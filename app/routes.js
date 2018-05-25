@@ -11,7 +11,7 @@ module.exports = function(app, passport){
     res.render('login', { message: req.flash('loginMessage') })
   })
 
-  app.get('/profile', isLoggedIn, function(req, res){
+  app.get('/profile', function(req, res){
     res.render('profile')
   })
 

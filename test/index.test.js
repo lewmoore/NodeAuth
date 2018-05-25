@@ -12,7 +12,7 @@ describe('index page', function(){
     .get('/')
     .end(function(err, res){
       res.should.have.status(200)
-      expect(res.text).to.contain('This is the home page')
+      expect(res.text).to.contain('Node Authentication')
     })
     done()
   })

@@ -50,8 +50,6 @@ module.exports = function(passport) {
         passReqToCallback : true
     },
     function(req, email, password, done) {
-      console.log(req)
-
         User.findOne({ 'local.email' :  email }, function(err, user) {
 
             if (err) { return done(err) }

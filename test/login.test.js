@@ -4,13 +4,15 @@ let server = require('../server')
 let expect = chai.expect
 let should = chai.should()
 
-describe('signup', function(){
-  it('Should render welcome text', function(done){
+chai.use(chaiHttp)
+
+describe('Login Page', function(){
+  it('should not error', function(done){
     chai.request(server)
-    .get('/signup')
+    .get('/login')
     .end(function(err, res){
       res.should.have.status(200)
-      expect(res.text).to.contain('Signup')
+      expect(res.text).to.contain('Login')
     })
     done()
   })
