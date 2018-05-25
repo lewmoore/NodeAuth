@@ -5,38 +5,14 @@ let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let cookieParser = require('cookie-parser')
 
-let User = require('./app/models/user')
-
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.set("view engine", "ejs")
 
+require('./app/routes.js')(app)
+
 mongoose.connect("mongodb://localhost:27017/NodeAuth");
-
-app.get('/', function(req, res){
-  res.render('index')
-})
-
-app.get('/login', function(req, res){
-  res.render('login')
-})
-
-app.get('/profile', function(req, res){
-  res.render('profile')
-})
-
-app.post('/profile', function(req, res){
-  let user = new User(req.body);
-  user.save(function(err, user){
-    if (err) {
-      res.send(err)
-    } else {
-      res.render('profile')
-    }
-  })
-})
 
 app.listen(port);
 console.log('The magic happens on port ' + port);
