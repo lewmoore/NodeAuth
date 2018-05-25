@@ -3,6 +3,8 @@ let chaiHttp = require('chai-http')
 let server = require('../server')
 let expect = chai.expect
 let should = chai.should()
+process.env.NODE_ENV = 'test';
+
 
 chai.use(chaiHttp)
 

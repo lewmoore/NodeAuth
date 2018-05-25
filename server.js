@@ -10,7 +10,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
-mongoose.connect('mongodb://localhost:27017/NodeAuth');
+if (process.env.NODE_ENV === 'test') {
+  mongoose.connect("mongodb://localhost:27017/NodeAuthTest")
+} else {
+  mongoose.connect("mongodb://localhost:27017/NodeAuth")
+}
+
 
 require('./config/passport')(passport);
 
