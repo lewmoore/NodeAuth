@@ -14,4 +14,19 @@ describe('Profile Page', function(){
     })
     done()
   })
+
+  it('should post to profile', function(done){
+    let user = {
+      email: 'lewis@gmail.com',
+      password: 'password'
+    }
+    chai.request(server)
+    .post('/profile')
+    .send(user)
+    .end(function(err, res){
+      res.should.have.status(200)
+      expect(res.body.email).to.equal('lewis@gmail.com')
+    })
+    done()
+  })
 })
