@@ -16,4 +16,18 @@ describe('Login Page', function(){
     })
     done()
   })
+
+  it('form posts successfully', function(done){
+    let user = {
+      email: 'test1@test.com',
+      password: 'test'
+    }
+    chai.request(server)
+    .post('/login')
+    .send(user)
+    .end(function(err, res){
+      res.should.have.status(200)
+    })
+    done()
+  })
 })
