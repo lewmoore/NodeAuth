@@ -4,6 +4,7 @@ let port = process.env.PORT || 8080;
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let cookieParser = require('cookie-parser')
+let flash = require('connect-flash')
 
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
