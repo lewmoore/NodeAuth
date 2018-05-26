@@ -5,7 +5,6 @@ let expect = chai.expect
 let should = chai.should()
 process.env.NODE_ENV = 'test';
 
-
 chai.use(chaiHttp)
 
 describe('index page', function(){
