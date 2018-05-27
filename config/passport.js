@@ -2,8 +2,6 @@ var LocalStrategy = require('passport-local').Strategy
 
 let User = require('../app/models/user')
 
-// Sets up Passport sessions for persistent log in sessions
-
 module.exports = function(passport) {
   passport.serializeUser(function(user, done){
     done(null, user.id)
