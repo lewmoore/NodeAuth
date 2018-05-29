@@ -11,8 +11,8 @@ describe('Profile Page', function(){
   it('should successfully load profile page when logged in', function(done){
     chai.request(server)
     .get('/profile')
-    .end(function(err, res){
-      res.should.have.status(200)
+    .end(function(req, res){
+      res.status.should.equal(200)
     })
     done()
   })
