@@ -1,6 +1,6 @@
 module.exports = function(app, passport){
   app.get('/', function(req, res){
-    res.render('index')
+    res.render('index', { message: req.flash('notLoggedIn')})
   })
 
   app.get('/signup', function(req, res){
@@ -37,6 +37,7 @@ module.exports = function(app, passport){
   if (req.isAuthenticated())
       return next();
 
+  req.flash('notLoggedIn', 'You are not logged in')
   res.redirect('/');
   }
 }
