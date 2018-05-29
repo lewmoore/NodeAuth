@@ -28,7 +28,10 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 
-app.use(session({ secret: 'thisisasecret' }));
+app.use(session({
+  secret: 'thisisasecret',
+  resave: true,
+  saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
