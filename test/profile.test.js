@@ -8,12 +8,12 @@ process.env.NODE_ENV = 'test';
 chai.use(chaiHttp)
 
 describe('Profile Page', function(){
-  it('should successfully load profile page when logged in', function(done){
+  it('should load successfully', function(done){
     chai.request(server)
     .get('/profile')
-    .end(function(req, res){
-      res.status.should.equal(200)
+    .end(function(err, res){
+      res.should.have.status(200)
+      done()
     })
-    done()
   })
 })
