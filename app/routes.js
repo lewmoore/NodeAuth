@@ -11,7 +11,7 @@ module.exports = function(app, passport){
     res.render('login', { message: req.flash('loginMessage') })
   })
 
-  app.get('/profile', isLoggedIn, function(req, res){
+  app.get('/profile', function(req, res){
     res.render('profile')
   })
 
@@ -31,13 +31,13 @@ module.exports = function(app, passport){
       req.logout();
       res.redirect('/');
   });
-
-  function isLoggedIn(req, res, next) {
-
-  if (req.isAuthenticated())
-      return next();
-
-  req.flash('notLoggedIn', 'You are not logged in')
-  res.redirect('/');
-  }
+  //
+  // function isLoggedIn(req, res, next) {
+  //
+  // if (req.isAuthenticated())
+  //     return next();
+  //
+  // req.flash('notLoggedIn', 'You are not logged in')
+  // res.redirect('/');
+  // }
 }

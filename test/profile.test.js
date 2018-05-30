@@ -16,4 +16,13 @@ describe('Profile Page', function(){
       done()
     })
   })
+
+  it('should display welcome message', function(done){
+    chai.request(server)
+    .get('/profile')
+    .end(function(err, res){
+      expect(res.text).to.contain('profile page')
+      done()
+    })
+  })
 })
