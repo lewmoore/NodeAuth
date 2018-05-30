@@ -3,13 +3,12 @@ let chaiHttp = require('chai-http')
 let server = require('../server')
 let expect = chai.expect
 let should = chai.should()
-let request = require('supertest')
 process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp)
 
 describe('Profile Page Auth', function(){
-  let AuthUser = request.agent(server)
+  let AuthUser = chai.request.agent(server)
   let user = {
     email: 'test1@test.com',
     password: 'test'
