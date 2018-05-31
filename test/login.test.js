@@ -15,8 +15,8 @@ describe('Login Page', function(){
     .end(function(err, res){
       res.should.have.status(200)
       expect(res.text).to.contain('Login')
+      done()
     })
-    done()
   })
 
   it('form posts successfully', function(done){
@@ -29,7 +29,7 @@ describe('Login Page', function(){
     .send(user)
     .end(function(err, res){
       res.should.have.status(200)
-        done()
+      done()
     })
   })
 })
