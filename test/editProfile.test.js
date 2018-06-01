@@ -8,11 +8,34 @@ process.env.NODE_ENV = 'test';
 chai.use(chaiHttp)
 
 describe('Edit Profile', function(){
+  let AuthUser = chai.request.agent(server)
+  let user = {
+    email: 'test1@test.com',
+    password: 'test'
+  }
+
+  before(function(done){
+    AuthUser
+    .post('/login')
+    .send(user)
+    .end(function(err, res){
+      done()
+    })
+  })
+
   it('page doesnt error', function(){
     chai.request(server)
     .get('/profile/edit')
     .end(function(req, res){
       res.should.have.status(200)
+    })
+  })
+
+  it('should render a welcome message', function(){
+    AuthUser
+    .get('/profile/edit')
+    .end(function(req, res){
+      res.text.should.contain('Edit Profile Page')
     })
   })
 })

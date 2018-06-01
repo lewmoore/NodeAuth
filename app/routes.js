@@ -15,7 +15,7 @@ module.exports = function(app, passport){
     res.render('profile')
   })
 
-  app.get('/profile/edit', function(req, res){
+  app.get('/profile/edit', isLoggedIn, function(req, res){
     res.render('editProfile')
   })
 
