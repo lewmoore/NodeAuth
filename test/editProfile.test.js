@@ -23,11 +23,12 @@ describe('Edit Profile', function(){
     })
   })
 
-  it('page doesnt error', function(){
+  it('page doesnt error', function(done){
     chai.request(server)
     .get('/profile/edit')
     .end(function(req, res){
       res.should.have.status(200)
+      done()
     })
   })
 
