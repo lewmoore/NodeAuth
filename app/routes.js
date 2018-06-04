@@ -12,7 +12,7 @@ module.exports = function(app, passport){
   })
 
   app.get('/profile', isLoggedIn, function(req, res){
-    res.render('profile', { username: req.user.local.email})
+    res.render('profile', { user: req.user.local })
   })
 
   app.get('/profile/edit', isLoggedIn, function(req, res){
