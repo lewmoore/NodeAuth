@@ -19,7 +19,7 @@ describe('signup', function(){
     done()
   })
 
-  it('form posts successfully', function(done){
+  it('form posts successfully and logs in', function(done){
     let user = new User ({
       email: 'test1@test.com',
       password: 'test'
@@ -29,6 +29,7 @@ describe('signup', function(){
     .send(user)
     .end(function(err, res){
       res.should.have.status(200)
+      expect(res.req.path).to.equal('/profile')
     })
     done()
   })
