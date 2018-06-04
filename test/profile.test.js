@@ -33,6 +33,15 @@ describe('Profile Page Auth', function(){
       done()
     })
   })
+
+  it('should render users email address', function(req, res){
+    AuthUser
+    .get('/profile')
+    .end(function(err, res){
+      res.should.have.status(200)
+      res.text.should.contain('test1@test.com')
+    })
+  })
 })
 
 describe('Profile Page No Auth', function(){
