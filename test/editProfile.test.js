@@ -36,6 +36,7 @@ describe('Edit Profile', function(){
     AuthUser
     .get('/profile/edit')
     .end(function(req, res){
+      res.req.path.should.equal('/profile/edit')
       res.text.should.contain('Edit Profile Page')
     })
   })
