@@ -24,13 +24,13 @@ module.exports = function(app, passport){
   })
 
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
+    successRedirect: '/homepage',
     failureRedirect: '/signup',
     failureFlash: true
   }))
 
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile',
+    successRedirect: '/homepage',
     failureRedirect: '/login',
     failureFlash: true
   }))
