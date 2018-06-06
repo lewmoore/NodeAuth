@@ -19,6 +19,10 @@ module.exports = function(app, passport){
     res.render('editProfile')
   })
 
+  app.get('/homepage', isLoggedIn, function(req, res){
+    res.render('homepage')
+  })
+
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/profile',
     failureRedirect: '/signup',
