@@ -5,6 +5,7 @@ let Schema = mongoose.Schema;
 let UserSchema = new Schema ({
   local: {
     email: String,
+    username: String,
     password: String
   }
 })
