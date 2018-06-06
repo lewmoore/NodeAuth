@@ -29,17 +29,18 @@ describe('Profile Page Auth', function(){
     .end(function(err, res){
       res.should.have.status(200)
       res.req.path.should.equal('/profile')
-      res.text.should.contain('profile page')
+      res.text.should.contain('Welcome to your profile page!')
       done()
     })
   })
 
-  it('should render users email address', function(req, res){
+  it('should render users email address', function(done){
     AuthUser
     .get('/profile')
     .end(function(err, res){
       res.should.have.status(200)
       res.text.should.contain('test1@test.com')
+      done()
     })
   })
 })
