@@ -7,26 +7,26 @@ process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp)
 
-describe('Profile Page Auth', function(){
+describe('Profile Page Auth', () => {
   let AuthUser = chai.request.agent(server)
   let user = {
     email: 'test1@test.com',
     password: 'test'
   }
 
-  before(function(done){
+  before((done) => {
     AuthUser
     .post('/login')
     .send(user)
-    .end(function(err, res){
+    .end((err, res) => {
       done()
     })
   })
 
-  it('should render welcome text', function(done){
+  it('should render welcome text', (done) => {
     AuthUser
     .get('/homepage')
-    .end(function(err, res){
+    .end((err, res) => {
       res.should.have.status(200)
       res.text.should.contain('Welcome to GradCamp')
       done()
