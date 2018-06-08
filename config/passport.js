@@ -2,13 +2,13 @@ var LocalStrategy = require('passport-local').Strategy
 
 let User = require('../app/models/user')
 
-module.exports = function(passport) {
-  passport.serializeUser(function(user, done){
+module.exports = (passport) => {
+  passport.serializeUser((user, done) => {
     done(null, user.id)
   })
 
-  passport.deserializeUser(function(id, done){
-    User.findById(id, function(err, user){
+  passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
       done(err, user)
     });
   });
@@ -19,10 +19,10 @@ module.exports = function(passport) {
     passReqToCallback: true
   },
 
-  function(req, email, password, done) {
-    process.nextTick(function(){
+  (req, email, password, done) => {
+    process.nextTick(() => {
 
-      User.findOne({ 'local.email': email }, function(err, user){
+      User.findOne({ 'local.email': email }, (err, user) => {
         if (err) { return done(err) }
           if (user) {
             return done(null, false, req.flash('signupMessage', 'That email is already taken'));
@@ -32,7 +32,7 @@ module.exports = function(passport) {
             newUser.local.email = email;
             newUser.local.password = newUser.generateHash(password)
 
-            newUser.save(function(err){
+            newUser.save((err) => {
               if (err)
                 throw err;
               return done(null, newUser)
@@ -47,8 +47,8 @@ module.exports = function(passport) {
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, email, password, done) {
-        User.findOne({ 'local.email' :  email }, function(err, user) {
+    (req, email, password, done) => {
+        User.findOne({ 'local.email' :  email }, (err, user) => {
 
             if (err) { return done(err) }
 
