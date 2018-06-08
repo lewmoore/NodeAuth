@@ -1,25 +1,25 @@
-module.exports = function(app, passport){
-  app.get('/', function(req, res){
+module.exports = (app, passport) => {
+  app.get('/', (req, res) => {
     res.render('index', { message: req.flash('notLoggedIn')})
   })
 
-  app.get('/signup', function(req, res){
+  app.get('/signup', (req, res) => {
     res.render('signup', { message: req.flash('signupMessage') })
   })
 
-  app.get('/login', function(req, res){
+  app.get('/login', (req, res) => {
     res.render('login', { message: req.flash('loginMessage') })
   })
 
-  app.get('/profile', isLoggedIn, function(req, res){
+  app.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', { user: req.user.local })
   })
 
-  app.get('/profile/edit', isLoggedIn, function(req, res){
+  app.get('/profile/edit', isLoggedIn, (req, res) => {
     res.render('editProfile')
   })
 
-  app.get('/homepage', isLoggedIn, function(req, res){
+  app.get('/homepage', isLoggedIn, (req, res) => {
     res.render('homepage')
   })
 
@@ -35,7 +35,7 @@ module.exports = function(app, passport){
     failureFlash: true
   }))
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', (req, res) => {
       req.logout();
       res.redirect('/');
   });
