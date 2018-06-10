@@ -1,3 +1,5 @@
+let Profile = require('./models/profile')
+
 module.exports = (app, passport) => {
   app.get('/', (req, res) => {
     res.render('index', { message: req.flash('notLoggedIn')})
@@ -36,8 +38,15 @@ module.exports = (app, passport) => {
   }))
 
   app.post('/profile', (req, res) => {
-    console.log(req.body)
-    res.render('profile')
+    let newProfile = new Profile(req.body)
+    newProfile.save((err, profile) => {
+      if(err) {
+        res.send(err)
+      } else {
+        console.log(req.body)
+        res.render('profile')
+      }
+    })
   })
 
   app.get('/logout', (req, res) => {
