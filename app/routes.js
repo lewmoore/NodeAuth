@@ -35,6 +35,11 @@ module.exports = (app, passport) => {
     failureFlash: true
   }))
 
+  app.post('/profile', (req, res) => {
+    console.log(req.body)
+    res.render('profile')
+  })
+
   app.get('/logout', (req, res) => {
       req.logout();
       res.redirect('/');
