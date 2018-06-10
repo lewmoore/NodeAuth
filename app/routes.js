@@ -14,7 +14,8 @@ module.exports = (app, passport) => {
   })
 
   app.get('/profile', isLoggedIn, (req, res) => {
-    res.render('profile', { user: req.user.local })
+    console.log(res.session)
+    res.render('profile', { user: req.user.local, profile: req.session })
   })
 
   app.get('/profile/edit', isLoggedIn, (req, res) => {
@@ -38,12 +39,15 @@ module.exports = (app, passport) => {
   }))
 
   app.post('/profile', (req, res) => {
+    // Need to add link between Profile and User object to persist.
+    // atm, its creating new Profile object everytime you post and not persisting
     let newProfile = new Profile(req.body)
     newProfile.save((err, profile) => {
       if(err) {
         res.send(err)
       } else {
-        res.render('profile')
+        console.log(newProfile)
+        res.render('profile', { profile: newProfile })
       }
     })
   })

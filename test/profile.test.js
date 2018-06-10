@@ -33,6 +33,20 @@ describe('Profile Page Auth', function(){
       done()
     })
   })
+
+  it('should load firstname, surname and jobtitle when posting from edit', function(done){
+    let userProfile = {
+      firstname: 'Lewis', lastname: 'Moore', job: 'Developer'
+    }
+    AuthUser
+    .post('/profile')
+    .send(userProfile)
+    .end(function(err, res){
+      res.should.have.status(200)
+      expect(res.text).to.contain('Name: Lewis Moore')
+      done()
+    })
+  })
 })
 
 describe('Profile Page No Auth', function(){
