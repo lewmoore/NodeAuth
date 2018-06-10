@@ -43,7 +43,6 @@ module.exports = (app, passport) => {
       if(err) {
         res.send(err)
       } else {
-        console.log(req.body)
         res.render('profile')
       }
     })
