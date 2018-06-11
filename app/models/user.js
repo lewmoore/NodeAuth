@@ -3,10 +3,8 @@ let bcrypt = require('bcrypt-nodejs')
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema ({
-  local: {
     email: String,
     password: String
-  }
 })
 
 UserSchema.methods.generateHash = function(password){
@@ -14,7 +12,7 @@ UserSchema.methods.generateHash = function(password){
 };
 
 UserSchema.methods.validPassword = function(password){
-  return bcrypt.compareSync(password, this.local.password)
+  return bcrypt.compareSync(password, this.password)
 }
 
 module.exports = mongoose.model('User', UserSchema)
