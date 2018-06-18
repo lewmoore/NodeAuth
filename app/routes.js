@@ -37,20 +37,6 @@ module.exports = (app, passport) => {
     failureFlash: true
   }))
 
-  // app.post('/profile', (req, res) => {
-  //   // Need to add link between Profile and User object to persist.
-  //   // atm, its creating new Profile object everytime you post and not persisting
-  //   let newProfile = new Profile(req.body)
-  //   newProfile.save((err, profile) => {
-  //     if(err) {
-  //       res.send(err)
-  //     } else {
-  //       console.log(newProfile)
-  //       res.render('profile', { profile: newProfile })
-  //     }
-  //   })
-  // })
-
   app.get('/logout', (req, res) => {
       req.logout();
       res.redirect('/');
