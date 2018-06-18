@@ -14,7 +14,6 @@ module.exports = (app, passport) => {
   })
 
   app.get('/profile', isLoggedIn, (req, res) => {
-    console.log(res.session)
     res.render('profile', { user: req.user.local, profile: req.session })
   })
 
